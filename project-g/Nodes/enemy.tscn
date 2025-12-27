@@ -20,6 +20,25 @@ radius = 16.0
 [node name="Enemy" type="Node2D"]
 script = ExtResource("1_7k104")
 
+[node name="RCDown" type="RayCast2D" parent="."]
+collision_mask = 4
+collide_with_areas = true
+
+[node name="RCLeft" type="RayCast2D" parent="."]
+target_position = Vector2(-50, 0)
+collision_mask = 4
+collide_with_areas = true
+
+[node name="RCRight" type="RayCast2D" parent="."]
+target_position = Vector2(50, 0)
+collision_mask = 4
+collide_with_areas = true
+
+[node name="RCUp" type="RayCast2D" parent="."]
+target_position = Vector2(0, -50)
+collision_mask = 4
+collide_with_areas = true
+
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_hrxw6")
 
@@ -28,21 +47,5 @@ collision_layer = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AnimatedSprite2D/Area2D"]
 shape = SubResource("CircleShape2D_jpxen")
-
-[node name="RCDown" type="RayCast2D" parent="AnimatedSprite2D"]
-collision_mask = 4
-collide_with_areas = true
-
-[node name="RCLeft" type="RayCast2D" parent="AnimatedSprite2D"]
-target_position = Vector2(-50, 0)
-collision_mask = 4
-
-[node name="RCRight" type="RayCast2D" parent="AnimatedSprite2D"]
-target_position = Vector2(50, 0)
-collision_mask = 4
-
-[node name="RCUp" type="RayCast2D" parent="AnimatedSprite2D"]
-target_position = Vector2(0, -50)
-collision_mask = 4
 
 [node name="Timer" type="Timer" parent="."]
