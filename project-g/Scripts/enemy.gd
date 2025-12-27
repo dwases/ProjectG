@@ -7,3 +7,4 @@ func death() -> void:
 	
 func attack() -> void:
 	pass
+	

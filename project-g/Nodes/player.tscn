@@ -1,5 +1,6 @@
-[gd_scene load_steps=5 format=3 uid="uid://3fp4y4bv7cn4"]
+[gd_scene load_steps=6 format=3 uid="uid://3fp4y4bv7cn4"]
 
+[ext_resource type="Script" uid="uid://odl8fmmpq805" path="res://Scripts/player.gd" id="1_pie2b"]
 [ext_resource type="Script" uid="uid://bp7vu6kcbptff" path="res://Components/Stats/StatsComponent.gd" id="1_qlfej"]
 [ext_resource type="Texture2D" uid="uid://dhk45qxuugkhq" path="res://Textures/Fish1.png" id="2_qlfej"]
 
@@ -18,13 +19,11 @@ animations = [{
 radius = 16.03122
 
 [node name="Player" type="Node2D"]
-script = ExtResource("1_qlfej")
+script = ExtResource("1_pie2b")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(-3.5762787e-07, 0.12500024)
-scale = Vector2(1.016, 1)
 sprite_frames = SubResource("SpriteFrames_sfp35")
 
 [node name="StatsComponent" type="Node" parent="."]
@@ -38,14 +37,17 @@ collide_with_areas = true
 [node name="RCLeft" type="RayCast2D" parent="."]
 target_position = Vector2(-50, 0)
 collision_mask = 4
+collide_with_areas = true
 
 [node name="RCRight" type="RayCast2D" parent="."]
 target_position = Vector2(50, 0)
 collision_mask = 4
+collide_with_areas = true
 
 [node name="RCUp" type="RayCast2D" parent="."]
 target_position = Vector2(0, -50)
 collision_mask = 4
+collide_with_areas = true
 
 [node name="Area2D" type="Area2D" parent="."]
 collision_mask = 2
