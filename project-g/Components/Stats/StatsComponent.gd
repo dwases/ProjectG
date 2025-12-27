@@ -53,3 +53,27 @@ func heal(amount: int) -> void:
 func try_dodge() -> bool:
 	var dodge_chance = (current_dex * 0.5) + (current_lck * 0.1)
 	return randf_range(0, 100) < dodge_chance
+# Funkcja do modyfikowania atrybutów (np. po wypiciu mikstury siły)
+
+func modify_stat(stat_name: String, value: int) -> void:
+	match stat_name:
+		"strength":
+			current_str += value
+		"dexterity":
+			current_dex += value
+		"luck":
+			current_lck += value
+		_:
+			push_warning("Próba zmiany nieistniejącej statystyki: " + stat_name)
+			return # Nie emitujemy sygnału, jeśli nic nie zmieniliśmy
+
+	# TU JEST KLUCZ: Po zmianie wartości, informujemy świat
+	stats_changed.emit()
+
+# Opcjonalnie: Getter, żeby UI miało łatwiej pobrać wszystko na raz
+func get_stats_dict() -> Dictionary:
+	return {
+		"STR": current_str,
+		"DEX": current_dex,
+		"LCK": current_lck
+	}
