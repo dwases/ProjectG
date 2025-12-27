@@ -2,8 +2,8 @@ extends Control
 
 var stats_component: StatsComponent 
 
-@onready var health_bar: ProgressBar = $HealthBar
-@onready var stats_label: Label = $VBoxContainer/StatsLabel
+@onready var health_bar: ProgressBar = $Layout/HealthBar
+@onready var stats_label: Label = $Layout/Stats/StatsLabel
 
 func connect_signals() -> void:
 	# Podłączamy się pod sygnały z komponentu
@@ -16,6 +16,8 @@ func initialize_ui() -> void:
 	if stats_component:
 		_on_health_changed(stats_component.current_hp, stats_component.base_stats.max_hp)
 		_on_stats_changed()
+		stats_component.stats_changed.connect(_on_stats_changed)
+		stats_component.health_changed.connect(_on_health_changed)
 	else:
 		push_error("Nie znaleziono komponentu statystyk!")
 
@@ -38,5 +40,5 @@ func _on_stats_changed() -> void:
 	stats_label.text = txt
 
 func setup(player: Node2D) -> void:
-	stats_component = player.get_node("CharacterBody2D/StatsComponent")
+	stats_component = player.get_node("StatsComponent")
 	initialize_ui()
