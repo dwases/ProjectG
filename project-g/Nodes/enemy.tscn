@@ -21,21 +21,22 @@ radius = 16.0
 script = ExtResource("1_7k104")
 
 [node name="RCDown" type="RayCast2D" parent="."]
+target_position = Vector2(0, 32)
 collision_mask = 4
 collide_with_areas = true
 
 [node name="RCLeft" type="RayCast2D" parent="."]
-target_position = Vector2(-50, 0)
+target_position = Vector2(-32, 0)
 collision_mask = 4
 collide_with_areas = true
 
 [node name="RCRight" type="RayCast2D" parent="."]
-target_position = Vector2(50, 0)
+target_position = Vector2(32, 0)
 collision_mask = 4
 collide_with_areas = true
 
 [node name="RCUp" type="RayCast2D" parent="."]
-target_position = Vector2(0, -50)
+target_position = Vector2(0, -32)
 collision_mask = 4
 collide_with_areas = true
 

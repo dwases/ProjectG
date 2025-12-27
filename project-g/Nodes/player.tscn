@@ -31,22 +31,31 @@ script = ExtResource("1_qlfej")
 metadata/_custom_type_script = "uid://bp7vu6kcbptff"
 
 [node name="RCDown" type="RayCast2D" parent="."]
+position = Vector2(0, 32)
+target_position = Vector2(0, 5)
 collision_mask = 4
+hit_from_inside = true
 collide_with_areas = true
 
 [node name="RCLeft" type="RayCast2D" parent="."]
-target_position = Vector2(-50, 0)
+position = Vector2(-32, 0)
+target_position = Vector2(-5, 0)
 collision_mask = 4
+hit_from_inside = true
 collide_with_areas = true
 
 [node name="RCRight" type="RayCast2D" parent="."]
-target_position = Vector2(50, 0)
+position = Vector2(32, 0)
+target_position = Vector2(5, 0)
 collision_mask = 4
+hit_from_inside = true
 collide_with_areas = true
 
 [node name="RCUp" type="RayCast2D" parent="."]
-target_position = Vector2(0, -50)
+position = Vector2(0, -32)
+target_position = Vector2(0, -5)
 collision_mask = 4
+hit_from_inside = true
 collide_with_areas = true
 
 [node name="Area2D" type="Area2D" parent="."]
