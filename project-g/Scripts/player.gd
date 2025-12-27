@@ -19,3 +19,7 @@ func _process(delta):
 	#if Input.is_action_just_pressed()
 
 	
+
+
+func _on_area_2d_area_entered(area: Area2D) -> void:
+	print("Interakcja") # Replace with function body.
