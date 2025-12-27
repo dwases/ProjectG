@@ -5,6 +5,9 @@ var inventory: Dictionary = {} # { ArtifactData: int }
 @onready
 var stats_component: StatsComponent = $StatsComponent
 
+func _ready() -> void:
+	AmIPlayer()
+
 func death() -> void:
 	pass
 	
