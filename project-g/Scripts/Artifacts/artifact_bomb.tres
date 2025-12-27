@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="ArtifactData" load_steps=2 format=3 uid="uid://beoo3517mpg4h"]
+
+[ext_resource type="Script" uid="uid://b52gudtchqdp6" path="res://Scripts/Artifacts/base_artefact.gd" id="1_00kru"]
+
+[resource]
+script = ExtResource("1_00kru")
+id = "0"
+metadata/_custom_type_script = "uid://b52gudtchqdp6"
