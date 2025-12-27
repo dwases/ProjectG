@@ -1,6 +1,18 @@
+@abstract
 class_name BaseArtifactScript extends Resource
 
 var player_stats = preload("uid://dtgvrioaqwptt")
+var owner: Node
+var stats_component: StatsComponent
+
+@abstract
+func setup_listeners() -> void
+
+func set_artifact_owner(getOwner: Node) -> void:
+	print("Setting script owner...\n%s\n" %[getOwner])
+	owner = getOwner
+	stats_component = owner.get_node("StatsComponent")
+	setup_listeners()
 
 func apply_constant_stat_changes(stats_component : StatsComponent, strength_change : int,
 dexterity_change : int, luck_change : int) -> void:

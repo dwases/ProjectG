@@ -20,6 +20,7 @@ func attack() -> void:
 
 
 func add_artifact(artifact: ArtifactData):
+	print("Created new artifact... Adding it now.\n%s\n" %[artifact])
 	if inventory.has(artifact):
 		inventory[artifact] += 1
 	else:
@@ -28,6 +29,16 @@ func add_artifact(artifact: ArtifactData):
 #	apply_artifact_effect(artifact)
 
 func _process(delta):
+	if Input.is_action_just_pressed("take_damage_test"):
+		stats_component.take_damage(10)
+	if Input.is_action_just_pressed("add_artifact"):
+		add_artifact(ArtifactData.new(
+			self, 
+			"Collar", 
+			"Shock Collar", 
+			Texture2D.new(), 
+			"ZAPPP ZAPPP", 
+			ArtifactCollar.new()))
 	if is_in_combat:
 		return
 	if Input.is_action_just_pressed("move_right"):
