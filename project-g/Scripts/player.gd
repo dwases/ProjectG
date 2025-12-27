@@ -1,7 +1,7 @@
 class_name Player extends Unit
 
 var inventory: Dictionary = {} # { ArtifactData: int }
-@onready var map_battle_window: BattleWindow = %MapBattleWindow
+#@onready var map_battle_window: BattleWindow = %MapBattleWindow
 
 @onready
 var stats_component: StatsComponent = $StatsComponent
@@ -43,13 +43,13 @@ func _process(delta):
 	#if Input.is_action_just_pressed()
 
 	
-
+@onready var battle_window_scene = preload("res://Nodes/battle_window.tscn")
 
 func _on_area_2d_area_entered(area: Area2D) -> void:
-	print("Interakcja") # Replace with function body.
-	
-	
-	map_battle_window.canvas_layer.show()
+	var B_Window = battle_window_scene.instantiate()
+	add_child(B_Window)
+	B_Window.initialize(self as Player, area.owner as Enemy)
+	#B_Window.canvas_layer.show()
 	is_in_combat = true
 	
 	#var parent = get_parent()
