@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://3fp4y4bv7cn4"]
+[gd_scene load_steps=8 format=3 uid="uid://3fp4y4bv7cn4"]
 
 [ext_resource type="Script" uid="uid://odl8fmmpq805" path="res://Scripts/player.gd" id="1_pie2b"]
 [ext_resource type="Script" uid="uid://bp7vu6kcbptff" path="res://Components/Stats/StatsComponent.gd" id="1_qlfej"]
+[ext_resource type="Texture2D" uid="uid://dakch4vdn336s" path="res://Textures/TokenBackground.png" id="2_hv3sw"]
 [ext_resource type="Texture2D" uid="uid://dhk45qxuugkhq" path="res://Textures/Fish1.png" id="2_qlfej"]
 [ext_resource type="Resource" uid="uid://dtgvrioaqwptt" path="res://Components/Stats/StatsFiles/PlayerStats.tres" id="4_sfp35"]
 
@@ -23,6 +24,9 @@ radius = 15.0
 script = ExtResource("1_pie2b")
 
 [node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_hv3sw")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_sfp35")
