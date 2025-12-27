@@ -38,6 +38,7 @@ func _process(delta):
 		move("up")
 	elif Input.is_action_just_pressed("move_down"):
 		move("down")
+		
 	
 	#if Input.is_action_just_pressed()
 

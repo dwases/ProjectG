@@ -27,29 +27,29 @@ metadata/_custom_type_script = "uid://bp7vu6kcbptff"
 
 [node name="RCDown" type="RayCast2D" parent="."]
 position = Vector2(0, 32)
-target_position = Vector2(0, 0)
-collision_mask = 4
+target_position = Vector2(0, 5)
+collision_mask = 6
 hit_from_inside = true
 collide_with_areas = true
 
 [node name="RCLeft" type="RayCast2D" parent="."]
 position = Vector2(-32, 0)
-target_position = Vector2(0, 0)
-collision_mask = 4
+target_position = Vector2(-5, 0)
+collision_mask = 6
 hit_from_inside = true
 collide_with_areas = true
 
 [node name="RCRight" type="RayCast2D" parent="."]
 position = Vector2(32, 0)
-target_position = Vector2(0, 0)
-collision_mask = 4
+target_position = Vector2(5, 0)
+collision_mask = 6
 hit_from_inside = true
 collide_with_areas = true
 
 [node name="RCUp" type="RayCast2D" parent="."]
 position = Vector2(0, -32)
-target_position = Vector2(0, 0)
-collision_mask = 4
+target_position = Vector2(0, -5)
+collision_mask = 6
 hit_from_inside = true
 collide_with_areas = true
 
