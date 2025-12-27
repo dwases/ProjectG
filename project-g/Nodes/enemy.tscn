@@ -1,16 +1,48 @@
-[gd_scene load_steps=3 format=3 uid="uid://b4w585g4rjgnu"]
+[gd_scene load_steps=5 format=3 uid="uid://dw5auuynltalb"]
 
 [ext_resource type="Script" uid="uid://c74as73in7pbm" path="res://Scripts/enemy.gd" id="1_7k104"]
+[ext_resource type="Texture2D" uid="uid://i40eb44psuij" path="res://Textures/Fish3.png" id="2_hrxw6"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_7xaro"]
-size = Vector2(16, 16)
+[sub_resource type="SpriteFrames" id="SpriteFrames_hrxw6"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_hrxw6")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_jpxen"]
+radius = 16.0
 
 [node name="Enemy" type="Node2D"]
 script = ExtResource("1_7k104")
 
-[node name="CharacterBody2D" type="CharacterBody2D" parent="."]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_hrxw6")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
-shape = SubResource("RectangleShape2D_7xaro")
+[node name="Area2D" type="Area2D" parent="AnimatedSprite2D"]
+collision_layer = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AnimatedSprite2D/Area2D"]
+shape = SubResource("CircleShape2D_jpxen")
+
+[node name="RCDown" type="RayCast2D" parent="AnimatedSprite2D"]
+collision_mask = 4
+collide_with_areas = true
+
+[node name="RCLeft" type="RayCast2D" parent="AnimatedSprite2D"]
+target_position = Vector2(-50, 0)
+collision_mask = 4
+
+[node name="RCRight" type="RayCast2D" parent="AnimatedSprite2D"]
+target_position = Vector2(50, 0)
+collision_mask = 4
+
+[node name="RCUp" type="RayCast2D" parent="AnimatedSprite2D"]
+target_position = Vector2(0, -50)
+collision_mask = 4
 
 [node name="Timer" type="Timer" parent="."]
