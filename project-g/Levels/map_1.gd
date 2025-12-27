@@ -1,7 +1,7 @@
 extends Node2D
 
 @onready var player = $Player
-@onready var hud = $HUD/Control
+@onready var hud = $HUD/StatsUI
 
 func _ready():
 	# Level przedstawia sobie te dwa obiekty

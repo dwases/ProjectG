@@ -1,7 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://3fp4y4bv7cn4"]
+[gd_scene load_steps=7 format=3 uid="uid://3fp4y4bv7cn4"]
 
+[ext_resource type="Script" uid="uid://odl8fmmpq805" path="res://Scripts/player.gd" id="1_pie2b"]
 [ext_resource type="Script" uid="uid://bp7vu6kcbptff" path="res://Components/Stats/StatsComponent.gd" id="1_qlfej"]
 [ext_resource type="Texture2D" uid="uid://dhk45qxuugkhq" path="res://Textures/Fish1.png" id="2_qlfej"]
+[ext_resource type="Resource" uid="uid://dtgvrioaqwptt" path="res://Components/Stats/StatsFiles/PlayerStats.tres" id="4_sfp35"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_sfp35"]
 animations = [{
@@ -18,7 +20,7 @@ animations = [{
 radius = 16.03122
 
 [node name="Player" type="Node2D"]
-script = ExtResource("1_qlfej")
+script = ExtResource("1_pie2b")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 
@@ -29,6 +31,7 @@ sprite_frames = SubResource("SpriteFrames_sfp35")
 
 [node name="StatsComponent" type="Node" parent="."]
 script = ExtResource("1_qlfej")
+base_stats = ExtResource("4_sfp35")
 metadata/_custom_type_script = "uid://bp7vu6kcbptff"
 
 [node name="RCDown" type="RayCast2D" parent="."]

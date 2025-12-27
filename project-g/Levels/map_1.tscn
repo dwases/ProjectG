@@ -1,13 +1,16 @@
-[gd_scene load_steps=5 format=3 uid="uid://bra3uj0pi4ix7"]
+[gd_scene load_steps=7 format=3 uid="uid://bra3uj0pi4ix7"]
 
 [ext_resource type="PackedScene" uid="uid://3fp4y4bv7cn4" path="res://Nodes/player.tscn" id="1_i2poe"]
+[ext_resource type="Script" uid="uid://bdii7ect7ult1" path="res://Levels/map_1.gd" id="1_q17nn"]
 [ext_resource type="Texture2D" uid="uid://cpvhuqxpq1kkr" path="res://Textures/icon.svg" id="2_kl4w6"]
 [ext_resource type="PackedScene" uid="uid://dw5auuynltalb" path="res://Nodes/enemy.tscn" id="3_kl4w6"]
+[ext_resource type="PackedScene" uid="uid://ess4twb6qpuy" path="res://UI/UI_PlayerStats.tscn" id="4_8dobv"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_kl4w6"]
 radius = 33.681263
 
 [node name="Map1" type="Node2D"]
+script = ExtResource("1_q17nn")
 
 [node name="TileMapLayer" type="TileMapLayer" parent="."]
 
@@ -26,3 +29,9 @@ collision_layer = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource("CircleShape2D_kl4w6")
+
+[node name="HUD" type="CanvasLayer" parent="."]
+
+[node name="StatsUI" parent="HUD" instance=ExtResource("4_8dobv")]
+offset_right = 402.0
+offset_bottom = 81.0
