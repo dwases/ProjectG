@@ -19,7 +19,7 @@ func add_artifact(artifact: ArtifactData):
 	else:
 		inventory[artifact] = 1
 	
-	apply_artifact_effect(artifact)
+#	apply_artifact_effect(artifact)
 
 func _process(delta):
 	if Input.is_action_just_pressed("move_right"):
