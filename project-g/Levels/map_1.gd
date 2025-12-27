@@ -5,7 +5,6 @@ extends Node2D
 
 func _ready():
 	## Level przedstawia sobie te dwa obiekty
-	##hud.stats_component = player.get_node("StatsComponent")
-	
+	hud.stats_component = player.get_node("StatsComponent")
 	## Musisz dodać funkcję setup() w HUD, żeby odświeżyć UI po przypisaniu
 	hud.setup(player)
