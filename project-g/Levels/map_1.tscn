@@ -1,10 +1,11 @@
-[gd_scene load_steps=8 format=4 uid="uid://bra3uj0pi4ix7"]
+[gd_scene load_steps=9 format=4 uid="uid://bra3uj0pi4ix7"]
 
 [ext_resource type="Texture2D" uid="uid://bue1nens6wr5" path="res://Textures/tileMap.png" id="1_8dobv"]
 [ext_resource type="PackedScene" uid="uid://3fp4y4bv7cn4" path="res://Nodes/player.tscn" id="1_i2poe"]
 [ext_resource type="Script" uid="uid://bdii7ect7ult1" path="res://Levels/map_1.gd" id="1_ws0qp"]
 [ext_resource type="PackedScene" uid="uid://dw5auuynltalb" path="res://Nodes/enemy.tscn" id="5_q17nn"]
 [ext_resource type="PackedScene" uid="uid://ess4twb6qpuy" path="res://UI/UI_PlayerStats.tscn" id="6_eqssk"]
+[ext_resource type="PackedScene" uid="uid://r5t2ks1mr5rc" path="res://Nodes/battle_window.tscn" id="6_ws0qp"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_q17nn"]
 texture = ExtResource("1_8dobv")
@@ -105,3 +106,6 @@ position = Vector2(528, -368)
 
 [node name="Enemy5" parent="." instance=ExtResource("5_q17nn")]
 position = Vector2(16, 496)
+
+[node name="MapBattleWindow" parent="." instance=ExtResource("6_ws0qp")]
+unique_name_in_owner = true
