@@ -1,9 +1,12 @@
-[gd_scene load_steps=3 format=3 uid="uid://bra3uj0pi4ix7"]
+[gd_scene load_steps=5 format=3 uid="uid://bra3uj0pi4ix7"]
 
+[ext_resource type="Script" uid="uid://bdii7ect7ult1" path="res://Levels/map_1.gd" id="1_8dobv"]
 [ext_resource type="PackedScene" uid="uid://3fp4y4bv7cn4" path="res://Nodes/player.tscn" id="1_i2poe"]
 [ext_resource type="Texture2D" uid="uid://cpvhuqxpq1kkr" path="res://Textures/icon.svg" id="2_kl4w6"]
+[ext_resource type="PackedScene" uid="uid://ess4twb6qpuy" path="res://UI/UI_PlayerStats.tscn" id="3_kl4w6"]
 
 [node name="Map1" type="Node2D"]
+script = ExtResource("1_8dobv")
 
 [node name="TileMapLayer" type="TileMapLayer" parent="."]
 
@@ -12,3 +15,5 @@
 [node name="Icon" type="Sprite2D" parent="."]
 position = Vector2(243, 140)
 texture = ExtResource("2_kl4w6")
+
+[node name="HUD" parent="." instance=ExtResource("3_kl4w6")]

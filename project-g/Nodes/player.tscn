@@ -1,7 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://3fp4y4bv7cn4"]
+[gd_scene load_steps=8 format=3 uid="uid://3fp4y4bv7cn4"]
 
 [ext_resource type="Script" uid="uid://odl8fmmpq805" path="res://Scripts/player.gd" id="1_aoxlc"]
 [ext_resource type="Texture2D" uid="uid://cpvhuqxpq1kkr" path="res://Textures/icon.svg" id="2_qlfej"]
+[ext_resource type="Script" uid="uid://bp7vu6kcbptff" path="res://Components/Stats/StatsComponent.gd" id="2_sfp35"]
+[ext_resource type="Resource" uid="uid://dtgvrioaqwptt" path="res://Components/Stats/StatsFiles/PlayerStats.tres" id="3_hv3sw"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_pie2b"]
 atlas = ExtResource("2_qlfej")
@@ -35,5 +37,9 @@ sprite_frames = SubResource("SpriteFrames_sfp35")
 shape = SubResource("RectangleShape2D_sh265")
 
 [node name="Camera2D" type="Camera2D" parent="CharacterBody2D"]
+
+[node name="StatsComponent" type="Node" parent="CharacterBody2D"]
+script = ExtResource("2_sfp35")
+base_stats = ExtResource("3_hv3sw")
 
 [node name="Timer" type="Timer" parent="."]
