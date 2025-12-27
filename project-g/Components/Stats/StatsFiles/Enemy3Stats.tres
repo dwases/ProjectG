@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="BaseStats" load_steps=4 format=3 uid="uid://b74on0bbf7kt5"]
+
+[ext_resource type="Texture2D" uid="uid://cxcwxf3q0a5kx" path="res://Textures/CombatCharacters/Fish4InCombat.png" id="1_e72fp"]
+[ext_resource type="Script" uid="uid://dmy30557lt77t" path="res://Components/Stats/StatsFiles/Base_Stats.gd" id="2_v8jp4"]
+[ext_resource type="Texture2D" uid="uid://mpdpml3v22id" path="res://Textures/Fish4.png" id="3_v8jp4"]
+
+[resource]
+script = ExtResource("2_v8jp4")
+strength = 2
+dexterity = 5
+luck = 5
+small_sprite = ExtResource("3_v8jp4")
+big_sprite = ExtResource("1_e72fp")
+max_hp = 28
+metadata/_custom_type_script = "uid://dmy30557lt77t"
