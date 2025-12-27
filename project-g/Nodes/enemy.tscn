@@ -12,3 +12,5 @@ script = ExtResource("1_7k104")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
 shape = SubResource("RectangleShape2D_7xaro")
+
+[node name="Timer" type="Timer" parent="."]
