@@ -18,14 +18,14 @@ func _init() -> void:
 
 func move(direction):
 	if direction == "right":
-		if !rc_right.is_colliding():
+		if rc_right.is_colliding():
 			position.x += 32
 	elif direction == "left":
-		if !rc_left.is_colliding():	
+		if rc_left.is_colliding():	
 			position.x -= 32
 	elif direction == "up":
-		if !rc_up.is_colliding():
+		if rc_up.is_colliding():
 			position.y -= 32
 	elif direction == "down":
-		if !rc_down.is_colliding():
+		if rc_down.is_colliding():
 			position.y += 32
