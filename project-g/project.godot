@@ -15,6 +15,10 @@ run/main_scene="uid://bra3uj0pi4ix7"
 config/features=PackedStringArray("4.5", "Forward Plus")
 config/icon="res://Textures/icon.svg"
 
+[autoload]
+
+EnemyManager="*res://Scripts/EnemyManager.gd"
+
 [input]
 
 move_left={

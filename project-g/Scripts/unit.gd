@@ -23,27 +23,28 @@ func _init() -> void:
 
 func move(direction) -> bool:
 	if direction == "right":
-		if rc_right.is_colliding():
+		if !rc_right.is_colliding():
 			position.x += 32
 			if IsPlayer:
-				on_player_move.emit()
+				EnemyManager.move_enemies()
+				#on_player_move.emit()
 			return true
 	elif direction == "left":
-		if rc_left.is_colliding():	
+		if !rc_left.is_colliding():	
 			position.x -= 32
 			if IsPlayer:
-				on_player_move.emit()
+				EnemyManager.move_enemies()
 			return true
 	elif direction == "up":
-		if rc_up.is_colliding():
+		if !rc_up.is_colliding():
 			position.y -= 32
 			if IsPlayer:
-				on_player_move.emit()
+				EnemyManager.move_enemies()
 			return true
 	elif direction == "down":
-		if rc_down.is_colliding():
+		if !rc_down.is_colliding():
 			position.y += 32
 			if IsPlayer:
-				on_player_move.emit()
+				EnemyManager.move_enemies()
 			return true
 	return false
