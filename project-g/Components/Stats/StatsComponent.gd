@@ -13,6 +13,8 @@ var current_hp: int
 var current_str: int
 var current_dex: int
 var current_lck: int
+var current_small_texture: Texture2D
+var current_big_texture: Texture2D
 
 func _ready() -> void:
 	if base_stats:
@@ -26,7 +28,8 @@ func initialize_stats() -> void:
 	current_str = base_stats.strength
 	current_dex = base_stats.dexterity
 	current_lck = base_stats.luck
-	
+	current_small_texture = base_stats.small_sprite
+	current_big_texture = base_stats.big_sprite
 	# Emitujemy stan początkowy (np. dla paska zdrowia)
 	health_changed.emit(current_hp, base_stats.max_hp)
 

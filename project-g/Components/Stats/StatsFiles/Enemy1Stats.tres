@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="BaseStats" load_steps=3 format=3 uid="uid://ce4ek2fl06km1"]
+
+[ext_resource type="Texture2D" uid="uid://i40eb44psuij" path="res://Textures/Fish3.png" id="1_dataf"]
+[ext_resource type="Script" uid="uid://dmy30557lt77t" path="res://Components/Stats/StatsFiles/Base_Stats.gd" id="1_q4ei1"]
+
+[resource]
+script = ExtResource("1_q4ei1")
+strength = 3
+dexterity = 3
+luck = 5
+small_sprite = ExtResource("1_dataf")
+big_sprite = ExtResource("1_dataf")
+max_hp = 35
+metadata/_custom_type_script = "uid://dmy30557lt77t"
