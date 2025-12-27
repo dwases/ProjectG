@@ -1,0 +1,23 @@
+[gd_scene load_steps=3 format=3 uid="uid://r5t2ks1mr5rc"]
+
+[ext_resource type="PackedScene" uid="uid://3fp4y4bv7cn4" path="res://Nodes/player.tscn" id="1_3pdia"]
+[ext_resource type="Script" uid="uid://dxrt8rglsxsyh" path="res://Scripts/battle_window.gd" id="1_bp1sa"]
+
+[node name="BattleWindow" type="Node2D"]
+script = ExtResource("1_bp1sa")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.44705883, 0.54901963, 1, 1)
+
+[node name="Player" parent="CanvasLayer" instance=ExtResource("1_3pdia")]
+position = Vector2(173, 324)
+
+[node name="BattleCamera" type="Camera2D" parent="."]
+zoom = Vector2(28.51, 28.51)
