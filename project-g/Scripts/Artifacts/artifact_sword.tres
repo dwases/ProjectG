@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="ArtifactData" load_steps=5 format=3 uid="uid://luhlhlljyh3i"]
+
+[ext_resource type="Script" uid="uid://b52gudtchqdp6" path="res://Scripts/Artifacts/base_artefact.gd" id="1_dfcy2"]
+[ext_resource type="Script" uid="uid://csvgbqsclaje" path="res://Scripts/Artifacts/artifact_sword.gd" id="1_lb6yc"]
+[ext_resource type="Texture2D" uid="uid://dmvvc3f068s6f" path="res://Textures/Artefacts/Thug'sSword.png" id="2_cawe1"]
+
+[sub_resource type="Resource" id="Resource_7dlhk"]
+script = ExtResource("1_lb6yc")
+metadata/_custom_type_script = "uid://csvgbqsclaje"
+
+[resource]
+script = ExtResource("1_dfcy2")
+id = "sword"
+display_name = "Thug Sword"
+icon = ExtResource("2_cawe1")
+description = "A stolen blade, stolen form a stealing little bugger"
+effect_script = SubResource("Resource_7dlhk")
+metadata/_custom_type_script = "uid://b52gudtchqdp6"

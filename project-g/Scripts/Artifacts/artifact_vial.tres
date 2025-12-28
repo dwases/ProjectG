@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="ArtifactData" load_steps=5 format=3 uid="uid://dvhktmb33xjl5"]
+
+[ext_resource type="Script" uid="uid://b52gudtchqdp6" path="res://Scripts/Artifacts/base_artefact.gd" id="1_5tem1"]
+[ext_resource type="Script" uid="uid://beywxf0i6d2dx" path="res://Scripts/Artifacts/artifact_vial.gd" id="1_8vfbw"]
+[ext_resource type="Texture2D" uid="uid://j06c2nn5626y" path="res://Textures/Artefacts/PoisonVial.png" id="2_iolsf"]
+
+[sub_resource type="Resource" id="Resource_3b6v1"]
+script = ExtResource("1_8vfbw")
+metadata/_custom_type_script = "uid://beywxf0i6d2dx"
+
+[resource]
+script = ExtResource("1_5tem1")
+id = "vial"
+display_name = "Poison Vial"
+icon = ExtResource("2_iolsf")
+description = "Just one sip will do... come on, drink it!"
+effect_script = SubResource("Resource_3b6v1")
+metadata/_custom_type_script = "uid://b52gudtchqdp6"
