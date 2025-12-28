@@ -112,10 +112,17 @@ script = ExtResource("1_bp1sa")
 script = ExtResource("2_k4tkk")
 
 [node name="Background" type="TextureRect" parent="CanvasLayer"]
-offset_left = 220.0
-offset_top = 99.0
-offset_right = 970.0
-offset_bottom = 599.0
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -375.0
+offset_top = -250.0
+offset_right = 375.0
+offset_bottom = 250.0
+grow_horizontal = 2
+grow_vertical = 2
 texture = ExtResource("3_vxyot")
 
 [node name="EnemyTexture" type="Sprite2D" parent="CanvasLayer/Background"]
@@ -175,10 +182,17 @@ offset_bottom = 40.0
 texture = ExtResource("7_xfkj0")
 
 [node name="Frame" type="TextureRect" parent="CanvasLayer"]
-offset_left = 220.0
-offset_top = 99.0
-offset_right = 260.0
-offset_bottom = 139.0
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -375.0
+offset_top = -250.0
+offset_right = 375.0
+offset_bottom = 250.0
+grow_horizontal = 2
+grow_vertical = 2
 mouse_filter = 2
 texture = ExtResource("7_x7wiu")
 

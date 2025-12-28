@@ -1,23 +1,11 @@
-[gd_scene load_steps=7 format=3 uid="uid://dw5auuynltalb"]
+[gd_scene load_steps=5 format=3 uid="uid://dw5auuynltalb"]
 
 [ext_resource type="Script" uid="uid://c74as73in7pbm" path="res://Scripts/enemy.gd" id="1_7k104"]
 [ext_resource type="Script" uid="uid://bp7vu6kcbptff" path="res://Components/Stats/StatsComponent.gd" id="2_jpxen"]
-[ext_resource type="Texture2D" uid="uid://h0r4bxk8hi8a" path="res://Textures/CombatCharacters/Fish2Combat.png" id="4_4erml"]
 [ext_resource type="Texture2D" uid="uid://dakch4vdn336s" path="res://Textures/TokenBackground.png" id="4_ojtsa"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_jpxen"]
 radius = 15.0
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_hrxw6"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("4_4erml")
-}],
-"loop": true,
-"name": &"default",
-"speed": 5.0
-}]
 
 [node name="Enemy" type="Node2D"]
 script = ExtResource("1_7k104")
@@ -41,7 +29,6 @@ collision_layer = 2
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource("CircleShape2D_jpxen")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-sprite_frames = SubResource("SpriteFrames_hrxw6")
+[node name="Sprite2DMain" type="Sprite2D" parent="."]
 
 [node name="Timer" type="Timer" parent="."]

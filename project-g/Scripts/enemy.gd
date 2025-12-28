@@ -5,7 +5,7 @@ var MoveOpportunities: Array[String] = ["left", "right", "down", "up"]
 
 @export var base_stats: BaseStats
 @onready var stats_component: StatsComponent = $StatsComponent
-@onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
+@onready var sprite_2d_main: Sprite2D = $Sprite2DMain
 
 var my_stats: BaseStats
 
@@ -19,7 +19,7 @@ func _ready() -> void:
 	stats_component.base_stats=my_stats
 	stats_component.initialize_stats()
 	stats_component.connect("died",death)
-	animated_sprite_2d.sprite_frames.set_frame("default",0,stats_component.current_small_texture)
+	sprite_2d_main.texture = stats_component.current_small_texture
 	# Rejestracja w managerze wrogów (zgodnie z Twoim systemem)
 	EnemyManager.add_enemy(self)
 
@@ -35,7 +35,7 @@ func death() -> void:
 	player.B_Window.queue_free()
 	player.is_in_combat = false
 	# Musisz usunąć obiekt, żeby GridManager zwolnił pole w słowniku (poprzez _exit_tree)
-	_exit_tree()
+	#_exit_tree()
 	queue_free()
 
 # Logika walki 1:1 taka jak Twoja
@@ -97,4 +97,4 @@ func start_combat(player: Player) -> void:
 	
 	# Opcjonalnie: Zatrzymaj input gracza, żeby nie mógł chodzić w tle
 	player.AddBattleWindow(player.B_Window)
-	set_process_input(false)
+	#set_process_input(false)

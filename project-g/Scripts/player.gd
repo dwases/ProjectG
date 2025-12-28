@@ -91,12 +91,12 @@ func _process(_delta):
 	
 
 
-func _on_area_2d_area_entered(area: Area2D) -> void:
-	#var B_Window = battle_window_scene.instantiate()
-	get_parent().add_child(B_Window)
-	B_Window.initialize(self as Player, area.owner as Enemy)
-	#B_Window.canvas_layer.show()
-	is_in_combat = true
+#func _on_area_2d_area_entered(area: Area2D) -> void:
+	##var B_Window = battle_window_scene.instantiate()
+	#get_parent().add_child(B_Window)
+	#B_Window.initialize(self as Player, area.owner as Enemy)
+	##B_Window.canvas_layer.show()
+	#is_in_combat = true
 	
 	#var parent = get_parent()
 	#var battle_window : BattleWindow = BattleWindow.new()
