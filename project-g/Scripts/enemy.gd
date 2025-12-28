@@ -3,19 +3,23 @@ class_name Enemy extends Unit
 # Lista kierunków do losowania
 var MoveOpportunities: Array[String] = ["left", "right", "down", "up"]
 
-
-@onready var stats_component: StatsComponent = $StatsComponent
-
 @export var base_stats: BaseStats
+@onready var stats_component: StatsComponent = $StatsComponent
+@onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
+
+var my_stats: BaseStats
+
 
 func _ready() -> void:
 	# KLUCZOWE: Wywołujemy _ready rodzica (Unit), żeby:
 	# 1. Zarejestrować się w GridManagerze (słowniku).
 	# 2. Przysnapować się idealnie do siatki.
 	super._ready()
-	stats_component.base_stats=base_stats
+	my_stats = base_stats.duplicate()
+	stats_component.base_stats=my_stats
 	stats_component.initialize_stats()
 	stats_component.connect("died",death)
+	animated_sprite_2d.sprite_frames.set_frame("default",0,stats_component.current_small_texture)
 	# Rejestracja w managerze wrogów (zgodnie z Twoim systemem)
 	EnemyManager.add_enemy(self)
 
