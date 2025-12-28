@@ -1,5 +1,7 @@
 class_name Enemy extends Unit
 
+signal enemy_attack
+
 # Lista kierunków do losowania
 var MoveOpportunities: Array[String] = ["left", "right", "down", "up"]
 
@@ -43,6 +45,7 @@ func death() -> void:
 func attack(player_component) -> void:
 	if not stats_component.is_dead():
 		print("Atakuję gracza") # Usunąłem ten specyficzny print ;)
+		enemy_attack.emit()
 		var attacks: Array[String] = ["light", "light", "light", "medium", "medium", "heavy"]
 		var selected_attack: String = attacks.pick_random()
 		

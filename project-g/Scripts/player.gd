@@ -1,5 +1,7 @@
 class_name Player extends Unit
 
+signal begin_battle(battleWindow: BattleWindow)
+
 var inventory: Array = [] # [ ArtifactData ]
 #@onready var map_battle_window: BattleWindow = %MapBattleWindow
 var B_Window : BattleWindow
@@ -57,6 +59,8 @@ func _process(_delta):
 	if Input.is_action_just_pressed("add_artifact"):
 		add_artifact(ArtifactList.artifacts["bomb"])
 	if Input.is_action_just_pressed("add_artifact2"):
+		add_artifact(ArtifactList.artifacts["broadsword"])
+	if Input.is_action_just_pressed("add_artifact3"):
 		add_artifact(ArtifactList.artifacts["collar"])
 	if is_in_combat or is_moving:
 		return 
@@ -111,3 +115,5 @@ func _process(_delta):
 func AddBattleWindow(BWindow) -> void:
 	get_parent().add_child(BWindow)
 	BWindow.BindToMap()
+	# Poinformuj słuchaczy o rozpoczęciu walki
+	begin_battle.emit(BWindow)
