@@ -8,7 +8,7 @@ class_name ArtifactData
 # Tutaj możesz dodać skrypt, który definiuje zachowanie (Logic)
 @export var effect_script: BaseArtifactScript
 
-var stacks: int = 0
+var stacks: int = 1
 var owner: Node = null
 
 signal artifact_stacks_gained(gained: int, current_stacks: int)
