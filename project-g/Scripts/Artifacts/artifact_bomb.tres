@@ -1,8 +1,18 @@
-[gd_resource type="Resource" script_class="ArtifactData" load_steps=2 format=3 uid="uid://beoo3517mpg4h"]
+[gd_resource type="Resource" script_class="ArtifactData" load_steps=5 format=3 uid="uid://beoo3517mpg4h"]
 
 [ext_resource type="Script" uid="uid://b52gudtchqdp6" path="res://Scripts/Artifacts/base_artefact.gd" id="1_00kru"]
+[ext_resource type="Script" uid="uid://d1hpvapofn8cb" path="res://Scripts/Artifacts/artifact_bomb.gd" id="1_cduq2"]
+[ext_resource type="Texture2D" uid="uid://bo0dhvysrjbou" path="res://Textures/Artefacts/Bomb.png" id="1_cec73"]
+
+[sub_resource type="Resource" id="Resource_7esk2"]
+script = ExtResource("1_cduq2")
+metadata/_custom_type_script = "uid://d1hpvapofn8cb"
 
 [resource]
 script = ExtResource("1_00kru")
-id = "0"
+id = "bomb"
+display_name = "Bomb"
+icon = ExtResource("1_cec73")
+description = "BOOOOOM"
+effect_script = SubResource("Resource_7esk2")
 metadata/_custom_type_script = "uid://b52gudtchqdp6"

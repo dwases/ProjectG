@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="ArtifactData" load_steps=5 format=3 uid="uid://hm1o1cpfqqmf"]
+
+[ext_resource type="Script" uid="uid://c0pmtypgsbiec" path="res://Scripts/Artifacts/artifact_collar.gd" id="1_bfs3l"]
+[ext_resource type="Script" uid="uid://b52gudtchqdp6" path="res://Scripts/Artifacts/base_artefact.gd" id="1_o5ncb"]
+[ext_resource type="Texture2D" uid="uid://bdwe3ehom1wmp" path="res://Textures/Artefacts/ShockCollar.png" id="2_twsii"]
+
+[sub_resource type="Resource" id="Resource_ht7wo"]
+script = ExtResource("1_bfs3l")
+metadata/_custom_type_script = "uid://c0pmtypgsbiec"
+
+[resource]
+script = ExtResource("1_o5ncb")
+id = "collar"
+display_name = "Shock Collar"
+icon = ExtResource("2_twsii")
+description = "ZAPP ZAPP"
+effect_script = SubResource("Resource_ht7wo")
+metadata/_custom_type_script = "uid://b52gudtchqdp6"
