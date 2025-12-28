@@ -7,6 +7,7 @@
 [resource]
 script = ExtResource("2_5kr8h")
 strength = 5
+dexterity = 100
 luck = 2
 small_sprite = ExtResource("1_dkufl")
 big_sprite = ExtResource("1_5kr8h")
