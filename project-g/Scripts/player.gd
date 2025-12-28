@@ -46,7 +46,6 @@ func add_artifact(artifact: ArtifactData):
 		inventory.append(artifact)
 	
 #	apply_artifact_effect(artifact)
-
 func _process(_delta):
 	if Input.is_action_just_pressed("take_damage_test"):
 		stats_component.take_damage(10)
@@ -54,21 +53,33 @@ func _process(_delta):
 		add_artifact(ArtifactList.artifacts["bomb"])
 	if Input.is_action_just_pressed("add_artifact2"):
 		add_artifact(ArtifactList.artifacts["collar"])
-	if is_in_combat:
-		return
+	if is_in_combat or is_moving:
+		return 
 	if Input.is_action_just_pressed("move_right"):
+		is_moving = true
 		if(move("right")):
 			EnemyManager.move_enemies()
+			await get_tree().create_timer(0.1).timeout
+			is_moving = false
 	elif Input.is_action_just_pressed("move_left"):
+		is_moving = true
 		if(move("left")):
 			EnemyManager.move_enemies()
+			await get_tree().create_timer(0.1).timeout
+			is_moving = false
 	elif Input.is_action_just_pressed("move_up"):
+		is_moving = true
 		if(move("up")):
 			EnemyManager.move_enemies()
+			await get_tree().create_timer(0.1).timeout
+			is_moving = false
 	elif Input.is_action_just_pressed("move_down"):
+		is_moving = true
 		if(move("down")):
 			EnemyManager.move_enemies()
-		
+			await get_tree().create_timer(0.1).timeout
+			is_moving = false
+	is_moving = false	
 	
 	#if Input.is_action_just_pressed()
 

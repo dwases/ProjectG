@@ -3,6 +3,8 @@ class_name Unit extends Node2D
 var grid_pos: Vector2i
 @onready var wall_check: RayCast2D = $RayCastWall
 
+var is_moving : bool = false
+
 func _ready() -> void:
 	# Używamy nowej funkcji do obliczenia startowej pozycji na siatce
 	grid_pos = GridManager.world_to_grid(global_position)
@@ -18,7 +20,7 @@ func animate_move(target_grid_pos: Vector2i) -> void:
 	var target_world_pos = GridManager.grid_to_world(target_grid_pos)
 	
 	tween.tween_property(self, "global_position", target_world_pos, 0.1).set_trans(Tween.TRANS_SINE)
-
+	
 # ... funkcja move() pozostaje bez zmian ...
 var AmPlayer: bool = false
 
