@@ -50,3 +50,9 @@ func remove_enemy_hud() -> void:
 	if current_enemy_ui != null:
 		current_enemy_ui.queue_free()
 		current_enemy_ui = null
+	#sprawdzanie warunku zwyciestwa gry
+	var children = get_children()
+	for child in children:
+		if child is Enemy:
+			return
+	get_tree().change_scene_to_file("res://Levels/victory_screen.tscn")
