@@ -1,10 +1,106 @@
-[gd_scene load_steps=6 format=3 uid="uid://r5t2ks1mr5rc"]
+[gd_scene load_steps=12 format=3 uid="uid://r5t2ks1mr5rc"]
 
 [ext_resource type="Script" uid="uid://dxrt8rglsxsyh" path="res://Scripts/battle_window.gd" id="1_bp1sa"]
 [ext_resource type="Script" uid="uid://ijgdfnrotrnh" path="res://Nodes/battle_canvas_layer.gd" id="2_k4tkk"]
 [ext_resource type="Texture2D" uid="uid://mpdpml3v22id" path="res://Textures/Fish4.png" id="3_k4tkk"]
 [ext_resource type="Texture2D" uid="uid://dmvvc3f068s6f" path="res://Textures/Artefacts/Thug'sSword.png" id="4_o1mx2"]
 [ext_resource type="Script" uid="uid://covm0qk151hoe" path="res://UI/UI_Scripts/AttackButtons.gd" id="5_cafwl"]
+
+[sub_resource type="Animation" id="Animation_cafwl"]
+resource_name = "player_light_attack"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CanvasLayer/ColorRect/PlayerTexture:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.26666668, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(189, 216.25), Vector2(264, 216), Vector2(189, 216.25)]
+}
+
+[sub_resource type="Animation" id="Animation_vxyot"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CanvasLayer/ColorRect/PlayerTexture:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(189, 216.25)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CanvasLayer/ColorRect/EnemyTexture:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(559, 215)]
+}
+
+[sub_resource type="Animation" id="Animation_x7wiu"]
+resource_name = "player_medium_attack"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CanvasLayer/ColorRect/PlayerTexture:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.36666667, 0.73333335),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(189, 216.25), Vector2(289, 216.25), Vector2(189, 216.25)]
+}
+
+[sub_resource type="Animation" id="Animation_xfkj0"]
+resource_name = "player_heavy_attack"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CanvasLayer/ColorRect/PlayerTexture:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(189, 216.25), Vector2(309, 216), Vector2(189, 216.25)]
+}
+
+[sub_resource type="Animation" id="Animation_nefc6"]
+resource_name = "enemy_light_attack"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CanvasLayer/ColorRect/EnemyTexture:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.26666668, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(559, 215), Vector2(484.00006, 215), Vector2(559, 215)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_vxyot"]
+_data = {
+&"RESET": SubResource("Animation_vxyot"),
+&"enemy_light_attack": SubResource("Animation_nefc6"),
+&"player_heavy_attack": SubResource("Animation_xfkj0"),
+&"player_light_attack": SubResource("Animation_cafwl"),
+&"player_medium_attack": SubResource("Animation_x7wiu")
+}
 
 [node name="BattleWindow" type="Node2D"]
 script = ExtResource("1_bp1sa")
@@ -28,7 +124,6 @@ color = Color(0.44705883, 0.54901963, 1, 1)
 position = Vector2(559, 215)
 scale = Vector2(6, 5.1875)
 texture = ExtResource("3_k4tkk")
-flip_h = true
 
 [node name="PlayerTexture" type="Sprite2D" parent="CanvasLayer/ColorRect"]
 position = Vector2(189, 216.25)
@@ -61,3 +156,9 @@ layout_mode = 2
 size_flags_horizontal = 0
 theme_override_colors/icon_normal_color = Color(1, 0, 0, 1)
 icon = ExtResource("4_o1mx2")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_vxyot")
+}
+speed_scale = 2.086
