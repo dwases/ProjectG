@@ -1,44 +1,53 @@
 extends Control
-
-var stats_component: StatsComponent 
+class_name StatsUI # Nadajemy nazwę klasy, by łatwiej typować
 
 @onready var health_bar: ProgressBar = $Layout/HealthBar
 @onready var stats_label: Label = $Layout/Stats/StatsLabel
 
-func connect_signals() -> void:
-	# Podłączamy się pod sygnały z komponentu
-	stats_component.health_changed.connect(_on_health_changed)
-	stats_component.stats_changed.connect(_on_stats_changed)
+var connected_component: StatsComponent
 
-func initialize_ui() -> void:
-	# Wymuszamy pierwsze odświeżenie, żeby UI nie było puste na starcie
-	# (Zakładamy, że stats_component jest już po swoim _ready)
-	if stats_component:
-		_on_health_changed(stats_component.current_hp, stats_component.base_stats.max_hp)
-		_on_stats_changed()
-		stats_component.stats_changed.connect(_on_stats_changed)
-		stats_component.health_changed.connect(_on_health_changed)
-	else:
-		push_error("Nie znaleziono komponentu statystyk!")
+func setup(unit: Node2D) -> void:
+	var component = unit.get_node_or_null("StatsComponent")
+	if not component:
+		push_error("Brak StatsComponent u: " + unit.name)
+		return
 
-# --- Reakcje na sygnały ---
+	connected_component = component
+	
+	# 1. Rozłącz stare sygnały (jeśli jakieś były - np. przy recyklingu UI)
+	_disconnect_signals()
+	
+	# 2. Podłącz nowe
+	connected_component.health_changed.connect(_on_health_changed)
+	connected_component.stats_changed.connect(_on_stats_changed)
+	
+	# 3. Wymuś pierwsze odświeżenie wyglądu
+	_on_health_changed(component.current_hp, component.base_stats.max_hp)
+	_on_stats_changed()
+
+func _disconnect_signals() -> void:
+	if connected_component:
+		if connected_component.health_changed.is_connected(_on_health_changed):
+			connected_component.health_changed.disconnect(_on_health_changed)
+		if connected_component.stats_changed.is_connected(_on_stats_changed):
+			connected_component.stats_changed.disconnect(_on_stats_changed)
 
 func _on_health_changed(current: int, max_val: int) -> void:
 	health_bar.max_value = max_val
 	health_bar.value = current
-	# Opcjonalnie tekst na pasku:
-	# $HealthBar/Label.text = "%d / %d" % [current, max_val]
 
 func _on_stats_changed() -> void:
-	# Pobieramy aktualne wartości bezpośrednio z komponentu
-	# Możesz tu użyć get_stats_dict(), które napisałem wyżej, albo odwołać się wprost
+	# Używamy zmiennej connected_component zamiast szukać get_node za każdym razem
 	var txt = "STR: %d\nDEX: %d\nLCK: %d" % [
-		stats_component.current_str,
-		stats_component.current_dex,
-		stats_component.current_lck
+		connected_component.current_str,
+		connected_component.current_dex,
+		connected_component.current_lck
 	]
 	stats_label.text = txt
 
-func setup(player: Node2D) -> void:
-	stats_component = player.get_node("StatsComponent")
-	initialize_ui()
+func set_alignment_right() -> void:
+	# 1. Przestawiamy tekst w Labelu na prawą stronę
+	stats_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_RIGHT
+	
+	# 2. (Opcjonalnie) Jeśli chcesz, żeby pasek życia malał w drugą stronę (od prawej do lewej)
+	# health_bar.fill_mode = ProgressBar.FILL_END_TO_BEGIN

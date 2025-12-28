@@ -1,9 +1,8 @@
-[gd_scene load_steps=8 format=3 uid="uid://dw5auuynltalb"]
+[gd_scene load_steps=7 format=3 uid="uid://dw5auuynltalb"]
 
 [ext_resource type="Script" uid="uid://c74as73in7pbm" path="res://Scripts/enemy.gd" id="1_7k104"]
 [ext_resource type="Texture2D" uid="uid://i40eb44psuij" path="res://Textures/Fish3.png" id="2_hrxw6"]
 [ext_resource type="Script" uid="uid://bp7vu6kcbptff" path="res://Components/Stats/StatsComponent.gd" id="2_jpxen"]
-[ext_resource type="Resource" uid="uid://ce4ek2fl06km1" path="res://Components/Stats/StatsFiles/Enemy1Stats.tres" id="3_4erml"]
 [ext_resource type="Texture2D" uid="uid://dakch4vdn336s" path="res://Textures/TokenBackground.png" id="4_ojtsa"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_jpxen"]
@@ -25,7 +24,6 @@ script = ExtResource("1_7k104")
 
 [node name="StatsComponent" type="Node" parent="."]
 script = ExtResource("2_jpxen")
-base_stats = ExtResource("3_4erml")
 metadata/_custom_type_script = "uid://bp7vu6kcbptff"
 
 [node name="RayCastWall" type="RayCast2D" parent="."]

@@ -3,14 +3,19 @@ class_name Enemy extends Unit
 # Lista kierunków do losowania
 var MoveOpportunities: Array[String] = ["left", "right", "down", "up"]
 
+
 @onready var stats_component: StatsComponent = $StatsComponent
+
+@export var base_stats: BaseStats
 
 func _ready() -> void:
 	# KLUCZOWE: Wywołujemy _ready rodzica (Unit), żeby:
 	# 1. Zarejestrować się w GridManagerze (słowniku).
 	# 2. Przysnapować się idealnie do siatki.
 	super._ready()
-	
+	stats_component.base_stats=base_stats
+	stats_component.initialize_stats()
+	stats_component.connect("died",death)
 	# Rejestracja w managerze wrogów (zgodnie z Twoim systemem)
 	EnemyManager.add_enemy(self)
 
@@ -21,18 +26,24 @@ func _exit_tree() -> void:
 	super._exit_tree()
 
 func death() -> void:
+	print("Śmierć")
+	var player: Player = %Player
+	player.B_Window.canvas_layer.hide()
+	player.is_in_combat = false
 	# Musisz usunąć obiekt, żeby GridManager zwolnił pole w słowniku (poprzez _exit_tree)
+	_exit_tree()
 	queue_free()
 
 # Logika walki 1:1 taka jak Twoja
 func attack(player_component) -> void:
-	print("Atakuję gracza") # Usunąłem ten specyficzny print ;)
-	var attacks: Array[String] = ["light", "light", "light", "medium", "medium", "heavy"]
-	var selected_attack: String = attacks.pick_random()
-	
-	if stats_component.try_hit(selected_attack, player_component.current_dex):
-		if !player_component.try_dodge():
-			player_component.take_damage(stats_component.calculate_damage(selected_attack))
+	if not stats_component.is_dead():
+		print("Atakuję gracza") # Usunąłem ten specyficzny print ;)
+		var attacks: Array[String] = ["light", "light", "light", "medium", "medium", "heavy"]
+		var selected_attack: String = attacks.pick_random()
+		
+		if stats_component.try_hit(selected_attack, player_component.current_dex):
+			if !player_component.try_dodge():
+				player_component.take_damage(stats_component.calculate_damage(selected_attack))
 
 func EnemyMove() -> void:
 	# Mapa kierunków do wektorów (słownik dla szybkości zapisu)
@@ -72,7 +83,7 @@ func start_combat(player: Player) -> void:
 	
 	# Twoja logika inicjalizacji walki:
 	player.B_Window = player.battle_window_scene.instantiate()
-	player.AddBattleWindow(player.B_Window)
+	
 	
 	# UWAGA: Przekazujemy 'enemy_instance' (konkretną rybę), 
 	# a nie 'Enemy' (nazwę klasy/typu).
@@ -81,4 +92,5 @@ func start_combat(player: Player) -> void:
 	player.is_in_combat = true
 	
 	# Opcjonalnie: Zatrzymaj input gracza, żeby nie mógł chodzić w tle
+	player.AddBattleWindow(player.B_Window)
 	set_process_input(false)
