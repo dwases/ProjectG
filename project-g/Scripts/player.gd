@@ -11,9 +11,13 @@ var is_in_combat : bool = false
 
 func _ready() -> void:
 	AmIPlayer()
+	stats_component.connect("died",death)
 
 func death() -> void:
-	pass
+	is_in_combat = true
+	await get_tree().create_timer(1.0).timeout
+	get_tree().change_scene_to_file("res://Levels/map_1.tscn")
+	
 	
 func attack(_player_component: StatsComponent) -> void:
 	pass
@@ -88,7 +92,7 @@ func _process(_delta):
 
 
 func _on_area_2d_area_entered(area: Area2D) -> void:
-	var B_Window = battle_window_scene.instantiate()
+	#var B_Window = battle_window_scene.instantiate()
 	get_parent().add_child(B_Window)
 	B_Window.initialize(self as Player, area.owner as Enemy)
 	#B_Window.canvas_layer.show()
