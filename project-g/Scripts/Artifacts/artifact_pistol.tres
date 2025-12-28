@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="ArtifactData" load_steps=5 format=3 uid="uid://r04fjduo4t6y"]
+
+[ext_resource type="Script" uid="uid://bmgkblqxq4m0w" path="res://Scripts/Artifacts/artifact_pistol.gd" id="1_5g3tc"]
+[ext_resource type="Script" uid="uid://b52gudtchqdp6" path="res://Scripts/Artifacts/base_artefact.gd" id="1_rijjy"]
+[ext_resource type="Texture2D" uid="uid://c57roawv54brx" path="res://Textures/Artefacts/Pistol.png" id="2_vphny"]
+
+[sub_resource type="Resource" id="Resource_5lt3v"]
+script = ExtResource("1_5g3tc")
+metadata/_custom_type_script = "uid://bmgkblqxq4m0w"
+
+[resource]
+script = ExtResource("1_rijjy")
+id = "pistol"
+display_name = "Old Pucker"
+icon = ExtResource("2_vphny")
+description = "Good old firearm"
+effect_script = SubResource("Resource_5lt3v")
+metadata/_custom_type_script = "uid://b52gudtchqdp6"

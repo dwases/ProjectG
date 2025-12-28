@@ -1,4 +1,4 @@
-class_name ArtifactBomb
+class_name ArtifactOracle
 extends BaseArtifactScript
 
 var last_hp_value: int

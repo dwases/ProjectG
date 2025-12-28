@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="ArtifactData" load_steps=5 format=3 uid="uid://2sp4y1pggboa"]
+
+[ext_resource type="Script" uid="uid://b52gudtchqdp6" path="res://Scripts/Artifacts/base_artefact.gd" id="1_ai2uq"]
+[ext_resource type="Script" uid="uid://cfrlym54ftqej" path="res://Scripts/Artifacts/artifact_oracle.gd" id="1_stnwv"]
+[ext_resource type="Texture2D" uid="uid://c0sx0541rgl3s" path="res://Textures/Artefacts/OracleBall.png" id="2_jk8kq"]
+
+[sub_resource type="Resource" id="Resource_4cdy4"]
+script = ExtResource("1_stnwv")
+metadata/_custom_type_script = "uid://cfrlym54ftqej"
+
+[resource]
+script = ExtResource("1_ai2uq")
+id = "oracle"
+display_name = "Oracle Ball"
+icon = ExtResource("2_jk8kq")
+description = "I forsee victory..."
+effect_script = SubResource("Resource_4cdy4")
+metadata/_custom_type_script = "uid://b52gudtchqdp6"
