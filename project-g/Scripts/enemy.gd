@@ -72,7 +72,7 @@ func start_combat(player: Player) -> void:
 	
 	# Twoja logika inicjalizacji walki:
 	player.B_Window = player.battle_window_scene.instantiate()
-	player.AddBattleWindow(player.B_Window)
+	
 	
 	# UWAGA: Przekazujemy 'enemy_instance' (konkretną rybę), 
 	# a nie 'Enemy' (nazwę klasy/typu).
@@ -81,4 +81,5 @@ func start_combat(player: Player) -> void:
 	player.is_in_combat = true
 	
 	# Opcjonalnie: Zatrzymaj input gracza, żeby nie mógł chodzić w tle
+	player.AddBattleWindow(player.B_Window)
 	set_process_input(false)
