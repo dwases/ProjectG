@@ -11,5 +11,5 @@ dexterity = 100
 luck = 5
 small_sprite = ExtResource("3_uowkt")
 big_sprite = ExtResource("1_q7f7i")
-max_hp = 50
+max_hp = 99999
 metadata/_custom_type_script = "uid://dmy30557lt77t"

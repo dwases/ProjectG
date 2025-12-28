@@ -1,5 +1,4 @@
-[gd_scene load_steps=13 format=4 uid="uid://bra3uj0pi4ix7"]
-[gd_scene load_steps=12 format=4 uid="uid://bra3uj0pi4ix7"]
+[gd_scene load_steps=14 format=4 uid="uid://bra3uj0pi4ix7"]
 
 [ext_resource type="Texture2D" uid="uid://bue1nens6wr5" path="res://Textures/tileMap.png" id="1_8dobv"]
 [ext_resource type="PackedScene" uid="uid://3fp4y4bv7cn4" path="res://Nodes/player.tscn" id="1_i2poe"]
@@ -591,34 +590,6 @@ base_stats = ExtResource("6_ws0qp")
 position = Vector2(16, 496)
 base_stats = ExtResource("6_ws0qp")
 
-[node name="Enemy6" parent="." instance=ExtResource("5_q17nn")]
-position = Vector2(624, -48)
-base_stats = ExtResource("6_ws0qp")
-
-[node name="Enemy7" parent="." instance=ExtResource("5_q17nn")]
-position = Vector2(624, -80)
-base_stats = ExtResource("6_ws0qp")
-
-[node name="Enemy8" parent="." instance=ExtResource("5_q17nn")]
-position = Vector2(656, -80)
-base_stats = ExtResource("6_ws0qp")
-
-[node name="Enemy9" parent="." instance=ExtResource("5_q17nn")]
-position = Vector2(688, -80)
-base_stats = ExtResource("6_ws0qp")
-
-[node name="Enemy10" parent="." instance=ExtResource("5_q17nn")]
-position = Vector2(688, -16)
-base_stats = ExtResource("6_ws0qp")
-
-[node name="Enemy11" parent="." instance=ExtResource("5_q17nn")]
-position = Vector2(656, -16)
-base_stats = ExtResource("6_ws0qp")
-
-[node name="Enemy12" parent="." instance=ExtResource("5_q17nn")]
-position = Vector2(624, -16)
-base_stats = ExtResource("6_ws0qp")
-
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
 autoplay = true
 
@@ -651,5 +622,5 @@ position = Vector2(-336, -176)
 base_stats = ExtResource("8_w554o")
 
 [node name="Enemy18" parent="." instance=ExtResource("5_q17nn")]
-position = Vector2(24, -304)
+position = Vector2(16, -305)
 base_stats = ExtResource("8_w554o")

@@ -10,9 +10,23 @@ extends Node2D
 # Zmienna do trzymania UI przeciwnika, żeby móc je potem usunąć
 var current_enemy_ui: Control = null
 
+var enemy_initial_count : int = 0
+
 func _ready():
 	# Setup gracza bez zmian
 	player_ui.setup(player)
+	
+	var children = get_children()
+	for child in children:
+		if child is Enemy:
+			enemy_initial_count += 1
+	print(enemy_initial_count)
+	#await get_tree().create_timer(2).timeout
+	#get_tree().change_scene_to_file("res://Levels/victory_screen.tscn")
+
+func _process(delta: float) -> void:
+	if enemy_initial_count <= 0:
+		get_tree().change_scene_to_file("res://Levels/victory_screen.tscn")
 
 # Funkcja wywoływana, gdy zaczyna się walka
 func create_enemy_hud(enemy_unit: Node2D) -> void:
@@ -50,9 +64,3 @@ func remove_enemy_hud() -> void:
 	if current_enemy_ui != null:
 		current_enemy_ui.queue_free()
 		current_enemy_ui = null
-	#sprawdzanie warunku zwyciestwa gry
-	var children = get_children()
-	for child in children:
-		if child is Enemy:
-			return
-	get_tree().change_scene_to_file("res://Levels/victory_screen.tscn")

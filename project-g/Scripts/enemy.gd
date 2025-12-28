@@ -31,6 +31,7 @@ func _exit_tree() -> void:
 
 func death() -> void:
 	print("Śmierć")
+	get_parent().enemy_initial_count -= 1
 	var player: Player = %Player
 	player.B_Window.queue_free()
 	player.is_in_combat = false
