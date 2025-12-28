@@ -34,18 +34,51 @@ func attack(player_component) -> void:
 		if !player_component.try_dodge():
 			player_component.take_damage(stats_component.calculate_damage(selected_attack))
 
-# Logika ruchu dostosowana do nowego systemu Unit.move()
 func EnemyMove() -> void:
-	# Kopiujemy listę kierunków
+	# Mapa kierunków do wektorów (słownik dla szybkości zapisu)
+	var dir_vectors = {
+		"up": Vector2i.UP,
+		"down": Vector2i.DOWN,
+		"left": Vector2i.LEFT,
+		"right": Vector2i.RIGHT
+	}
+	
+	# KROK 1: Sprawdź, czy Gracz jest na sąsiednim polu (Priorytet Ataku)
+	for direction in MoveOpportunities:
+		var offset = dir_vectors[direction]
+		var target_pos = grid_pos + offset
+		
+		# Pytamy Managera: "Kto tam stoi?"
+		var entity = GridManager.get_entity_at(target_pos)
+		
+		# Jeśli to Gracz -> Próbujemy w niego wejść!
+		if entity is Player:
+			print("Gracz namierzony! Próba ataku w kierunku: ", direction)
+			move(direction) # To zwróci false, ale wywoła interakcję (atak)
+			return # Kończymy turę, nie chcemy się już nigdzie indziej ruszać
+
+	# KROK 2: Jeśli Gracza nie ma obok -> Losowy spacer (Twoja stara logika)
 	var attempts = MoveOpportunities.duplicate()
-	# Tasujemy (Shuffle) - to informatyczny odpowiednik Twojego losowania indeksów, 
-	# ale szybszy i czystszy w zapisie.
 	attempts.shuffle()
 	
-	# Sprawdzamy po kolei kierunki
 	for direction in attempts:
-		# Funkcja move() z klasy Unit teraz sama sprawdza:
-		# 1. Czy jest ściana (RayCastWall)
-		# 2. Czy pole jest zajęte (GridManager)
 		if move(direction):
-			break # Jeśli udało się ruszyć (zwróciło true), przerywamy pętlę
+			break
+func _on_interaction(entity: Node2D) -> void:
+	if entity is Player:
+		start_combat(entity)
+func start_combat(player: Player) -> void:
+	print("Enemy wykrył kolizję z: ", player.name)
+	
+	# Twoja logika inicjalizacji walki:
+	player.B_Window = player.battle_window_scene.instantiate()
+	player.AddBattleWindow(player.B_Window)
+	
+	# UWAGA: Przekazujemy 'enemy_instance' (konkretną rybę), 
+	# a nie 'Enemy' (nazwę klasy/typu).
+	player.B_Window.initialize(player, self)
+	
+	player.is_in_combat = true
+	
+	# Opcjonalnie: Zatrzymaj input gracza, żeby nie mógł chodzić w tle
+	set_process_input(false)
