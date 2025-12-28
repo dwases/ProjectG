@@ -16,8 +16,8 @@ func _ready() -> void:
 func death() -> void:
 	is_in_combat = true
 	await get_tree().create_timer(1.0).timeout
-	get_tree().change_scene_to_file("res://Levels/map_1.tscn")
-	
+	#get_tree().change_scene_to_file("res://Levels/map_1.tscn")
+	get_tree().change_scene_to_file("res://Levels/game_over.tscn")
 	
 func attack(_player_component: StatsComponent) -> void:
 	pass

@@ -1,0 +1,16 @@
+[gd_scene load_steps=2 format=3 uid="uid://dgyglib5knywc"]
+
+[ext_resource type="Texture2D" uid="uid://b2nptserl3ey3" path="res://Textures/RamkaG.png" id="1_a0ewk"]
+
+[node name="Node" type="Node"]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer"]
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 3.0
+offset_bottom = 5.0
+texture = ExtResource("1_a0ewk")
+expand_mode = 2
