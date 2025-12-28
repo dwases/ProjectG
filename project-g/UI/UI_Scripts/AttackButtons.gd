@@ -1,6 +1,6 @@
 extends HBoxContainer
 
-signal attack_requested(type: String)
+#signal attack_requested(type: String)
 
 
 func _ready():
@@ -12,16 +12,17 @@ func _ready():
 	lightAttackButton.pressed.connect(_on_lightAttackButton_pressed)
 	mediumAttackButton.pressed.connect(_on_mediumAttackButton_pressed)
 	heavyAttackButton.pressed.connect(_on_heavyAttackButton_pressed)
+	
 
 func _on_lightAttackButton_pressed():
 	print("Przycisk lekki został kliknięty!")
-	attack_requested.emit("light")
+	owner.attack_requested("light")
 	# Tutaj wstawiasz swoją logikę, np. otwarcie menu artefaktów
 func _on_mediumAttackButton_pressed():
 	print("Przycisk średni został kliknięty!")
-	attack_requested.emit("medium")
+	owner.attack_requested("medium")
 	# Tutaj wstawiasz swoją logikę, np. otwarcie menu artefaktów
 func _on_heavyAttackButton_pressed():
 	print("Przycisk mocny został kliknięty!")
-	attack_requested.emit("heavy")
+	owner.attack_requested("heavy")
 	# Tutaj wstawiasz swoją logikę, np. otwarcie menu artefaktów
