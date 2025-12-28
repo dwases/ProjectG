@@ -6,6 +6,9 @@
 [ext_resource type="Resource" uid="uid://ce4ek2fl06km1" path="res://Components/Stats/StatsFiles/Enemy1Stats.tres" id="3_4erml"]
 [ext_resource type="Texture2D" uid="uid://dakch4vdn336s" path="res://Textures/TokenBackground.png" id="4_ojtsa"]
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_jpxen"]
+radius = 15.0
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_hrxw6"]
 animations = [{
 "frames": [{
@@ -17,9 +20,6 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_jpxen"]
-radius = 15.0
-
 [node name="Enemy" type="Node2D"]
 script = ExtResource("1_7k104")
 
@@ -28,44 +28,22 @@ script = ExtResource("2_jpxen")
 base_stats = ExtResource("3_4erml")
 metadata/_custom_type_script = "uid://bp7vu6kcbptff"
 
-[node name="RCDown" type="RayCast2D" parent="."]
-position = Vector2(0, 32)
-target_position = Vector2(0, 5)
-collision_mask = 6
-hit_from_inside = true
-collide_with_areas = true
-
-[node name="RCLeft" type="RayCast2D" parent="."]
-position = Vector2(-32, 0)
-target_position = Vector2(-5, 0)
-collision_mask = 6
-hit_from_inside = true
-collide_with_areas = true
-
-[node name="RCRight" type="RayCast2D" parent="."]
-position = Vector2(32, 0)
-target_position = Vector2(5, 0)
-collision_mask = 6
-hit_from_inside = true
-collide_with_areas = true
-
-[node name="RCUp" type="RayCast2D" parent="."]
-position = Vector2(0, -32)
-target_position = Vector2(0, -5)
-collision_mask = 6
+[node name="RayCastWall" type="RayCast2D" parent="."]
+target_position = Vector2(0, 32)
+collision_mask = 4
 hit_from_inside = true
 collide_with_areas = true
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("4_ojtsa")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-sprite_frames = SubResource("SpriteFrames_hrxw6")
-
-[node name="Area2D" type="Area2D" parent="AnimatedSprite2D"]
+[node name="Area2D" type="Area2D" parent="."]
 collision_layer = 2
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="AnimatedSprite2D/Area2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource("CircleShape2D_jpxen")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_hrxw6")
 
 [node name="Timer" type="Timer" parent="."]

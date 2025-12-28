@@ -14,7 +14,7 @@ func _ready() -> void:
 func death() -> void:
 	pass
 	
-func attack(player_component: StatsComponent) -> void:
+func attack(_player_component: StatsComponent) -> void:
 	pass
 
 
@@ -28,7 +28,7 @@ func add_artifact(artifact: ArtifactData):
 	
 #	apply_artifact_effect(artifact)
 
-func _process(delta):
+func _process(_delta):
 	if Input.is_action_just_pressed("take_damage_test"):
 		stats_component.take_damage(10)
 	if Input.is_action_just_pressed("add_artifact"):
@@ -42,13 +42,17 @@ func _process(delta):
 	if is_in_combat:
 		return
 	if Input.is_action_just_pressed("move_right"):
-		move("right")
+		if(move("right")):
+			EnemyManager.move_enemies()
 	elif Input.is_action_just_pressed("move_left"):
-		move("left")
+		if(move("left")):
+			EnemyManager.move_enemies()
 	elif Input.is_action_just_pressed("move_up"):
-		move("up")
+		if(move("up")):
+			EnemyManager.move_enemies()
 	elif Input.is_action_just_pressed("move_down"):
-		move("down")
+		if(move("down")):
+			EnemyManager.move_enemies()
 		
 	
 	#if Input.is_action_just_pressed()
