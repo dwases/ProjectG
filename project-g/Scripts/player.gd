@@ -1,6 +1,6 @@
 class_name Player extends Unit
 
-var inventory: Dictionary = {} # { ArtifactData: int }
+var inventory: Array = [] # [ ArtifactData ]
 #@onready var map_battle_window: BattleWindow = %MapBattleWindow
 
 @onready
@@ -20,11 +20,13 @@ func attack(_player_component: StatsComponent) -> void:
 
 
 func add_artifact(artifact: ArtifactData):
-	print("Created new artifact... Adding it now.\n%s\n" %[artifact])
+	artifact.setOwner(self)
 	if inventory.has(artifact):
-		inventory[artifact] += 1
+		print("Adding 1 more stack of an artifact: %s\n" %[artifact.display_name])
+		artifact.addStacks()
 	else:
-		inventory[artifact] = 1
+		print("Adding new artifact to collection: %s\n" %[artifact.display_name])
+		inventory.append(artifact)
 	
 #	apply_artifact_effect(artifact)
 
@@ -32,13 +34,9 @@ func _process(_delta):
 	if Input.is_action_just_pressed("take_damage_test"):
 		stats_component.take_damage(10)
 	if Input.is_action_just_pressed("add_artifact"):
-		add_artifact(ArtifactData.new(
-			self, 
-			"Collar", 
-			"Shock Collar", 
-			Texture2D.new(), 
-			"ZAPPP ZAPPP", 
-			ArtifactCollar.new()))
+		add_artifact(ArtifactList.artifacts["bomb"])
+	if Input.is_action_just_pressed("add_artifact2"):
+		add_artifact(ArtifactList.artifacts["collar"])
 	if is_in_combat:
 		return
 	if Input.is_action_just_pressed("move_right"):
