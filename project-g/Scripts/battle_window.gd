@@ -24,4 +24,7 @@ func attack_requested(type: String) -> void:
 			enemyref.stats_component.take_damage(playerref.stats_component.calculate_damage(type))
 	enemyref.attack(playerref.stats_component)
 	
-		
+#to na dole bedzie w enemy
+#var animation_name = "enemy_"
+#animation_name += selected_attack
+#animation_name += "_attack"
