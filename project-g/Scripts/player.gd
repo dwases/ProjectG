@@ -14,7 +14,7 @@ func _ready() -> void:
 func death() -> void:
 	pass
 	
-func attack() -> void:
+func attack(player_component: StatsComponent) -> void:
 	pass
 
 
