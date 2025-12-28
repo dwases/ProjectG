@@ -1,6 +1,8 @@
 extends Control
 class_name StatsUI # Nadajemy nazwę klasy, by łatwiej typować
 
+@onready var layout: VBoxContainer = $Layout
+
 @onready var health_bar: ProgressBar = $Layout/HealthBar
 @onready var stats_label: Label = $Layout/Stats/StatsLabel
 @onready var corner_texture: TextureRect = $AspectRatioContainer/TextureRect

@@ -20,6 +20,10 @@ config/icon="res://Textures/icon.svg"
 EnemyManager="*res://Scripts/EnemyManager.gd"
 GridManager="*res://Scripts/GridManager.gd"
 
+[display]
+
+window/size/mode=3
+
 [input]
 
 move_left={

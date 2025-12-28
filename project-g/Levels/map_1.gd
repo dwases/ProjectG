@@ -47,6 +47,8 @@ func create_enemy_hud(enemy_unit: Node2D) -> void:
 	# Ta funkcja ustawia zarówno kotwice (anchors) jak i pozycję (offsets)
 	new_ui.set_anchors_and_offsets_preset(Control.PRESET_TOP_RIGHT)
 	new_ui.custom_minimum_size.x = 300
+	#new_ui.health_bar.custom_minimum_size.x = 250
+	new_ui.layout.set_anchors_and_offsets_preset(Control.PRESET_TOP_RIGHT)
 	new_ui.position += Vector2(-300, 0)
 	new_ui.set_alignment_right()
 	
