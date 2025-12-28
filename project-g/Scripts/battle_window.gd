@@ -3,8 +3,8 @@ class_name BattleWindow extends Node2D
 @export var playerref: Player
 @export var enemyref: Enemy
 
-@onready var enemy_texture: Sprite2D = $CanvasLayer/ColorRect/EnemyTexture
-@onready var player_texture: Sprite2D = $CanvasLayer/ColorRect/PlayerTexture
+@onready var enemy_texture: Sprite2D = $CanvasLayer/Background/EnemyTexture
+@onready var player_texture: Sprite2D = $CanvasLayer/Background/PlayerTexture
 
 
 # Called when the node enters the scene tree for the first time.

@@ -1,8 +1,9 @@
-[gd_scene load_steps=11 format=4 uid="uid://bra3uj0pi4ix7"]
+[gd_scene load_steps=12 format=4 uid="uid://bra3uj0pi4ix7"]
 
 [ext_resource type="Texture2D" uid="uid://bue1nens6wr5" path="res://Textures/tileMap.png" id="1_8dobv"]
 [ext_resource type="PackedScene" uid="uid://3fp4y4bv7cn4" path="res://Nodes/player.tscn" id="1_i2poe"]
 [ext_resource type="Script" uid="uid://bdii7ect7ult1" path="res://Levels/map_1.gd" id="1_ws0qp"]
+[ext_resource type="PackedScene" uid="uid://dgyglib5knywc" path="res://UI/Frame.tscn" id="5_eqssk"]
 [ext_resource type="PackedScene" uid="uid://dw5auuynltalb" path="res://Nodes/enemy.tscn" id="5_q17nn"]
 [ext_resource type="PackedScene" uid="uid://ess4twb6qpuy" path="res://UI/UI_PlayerStats.tscn" id="6_eqssk"]
 [ext_resource type="Resource" uid="uid://bu667yc3hqs5g" path="res://Components/Stats/StatsFiles/Enemy2Stats.tres" id="6_ws0qp"]
@@ -561,9 +562,11 @@ position = Vector2(-16, -16)
 [node name="HUD" type="CanvasLayer" parent="."]
 
 [node name="StatsUI" parent="HUD" instance=ExtResource("6_eqssk")]
-custom_minimum_size = Vector2(250, 0)
+custom_minimum_size = Vector2(300, 0)
 offset_right = 250.0
 offset_bottom = 160.0
+
+[node name="FrameUI" parent="HUD" instance=ExtResource("5_eqssk")]
 
 [node name="Enemy2" parent="." instance=ExtResource("5_q17nn")]
 position = Vector2(304, 48)

@@ -3,7 +3,7 @@ class_name StatsUI # Nadajemy nazwę klasy, by łatwiej typować
 
 @onready var health_bar: ProgressBar = $Layout/HealthBar
 @onready var stats_label: Label = $Layout/Stats/StatsLabel
-
+@onready var corner_texture: TextureRect = $AspectRatioContainer/TextureRect
 var connected_component: StatsComponent
 
 func setup(unit: Node2D) -> void:
@@ -24,6 +24,7 @@ func setup(unit: Node2D) -> void:
 	# 3. Wymuś pierwsze odświeżenie wyglądu
 	_on_health_changed(component.current_hp, component.base_stats.max_hp)
 	_on_stats_changed()
+	health_bar.custom_minimum_size.x = 250
 
 func _disconnect_signals() -> void:
 	if connected_component:
@@ -48,6 +49,8 @@ func _on_stats_changed() -> void:
 func set_alignment_right() -> void:
 	# 1. Przestawiamy tekst w Labelu na prawą stronę
 	stats_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_RIGHT
+	corner_texture.flip_h = true
+	health_bar.fill_mode = ProgressBar.FILL_END_TO_BEGIN
 	
 	# 2. (Opcjonalnie) Jeśli chcesz, żeby pasek życia malał w drugą stronę (od prawej do lewej)
 	# health_bar.fill_mode = ProgressBar.FILL_END_TO_BEGIN

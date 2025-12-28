@@ -32,8 +32,8 @@ func create_enemy_hud(enemy_unit: Node2D) -> void:
 	# 1. Ustawienie Presetu na TOP_RIGHT
 	# Ta funkcja ustawia zarówno kotwice (anchors) jak i pozycję (offsets)
 	new_ui.set_anchors_and_offsets_preset(Control.PRESET_TOP_RIGHT)
-	new_ui.custom_minimum_size.x = 250
-	new_ui.position += Vector2(-250, 0)
+	new_ui.custom_minimum_size.x = 300
+	new_ui.position += Vector2(-300, 0)
 	new_ui.set_alignment_right()
 	
 	# 2. (Opcjonalnie) Korekta Marginesu
