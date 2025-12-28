@@ -35,6 +35,9 @@ func initialize_stats() -> void:
 
 # --- Logika Zdrowia ---
 
+func is_dead() -> bool:
+	return current_hp <= 0
+
 func take_damage(amount: int) -> void:
 	# Tutaj możesz w przyszłości dodać logikę pancerza (amount - defense)
 	current_hp -= amount
