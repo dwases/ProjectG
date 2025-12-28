@@ -28,7 +28,7 @@ func _exit_tree() -> void:
 func death() -> void:
 	print("Śmierć")
 	var player: Player = %Player
-	player.B_Window.canvas_layer.hide()
+	player.B_Window.queue_free()
 	player.is_in_combat = false
 	# Musisz usunąć obiekt, żeby GridManager zwolnił pole w słowniku (poprzez _exit_tree)
 	_exit_tree()
